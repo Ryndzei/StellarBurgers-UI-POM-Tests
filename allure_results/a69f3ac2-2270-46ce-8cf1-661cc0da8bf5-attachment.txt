@@ -1,0 +1,30 @@
+Click intercepted. Attempt 1/3: Message: Element <button class="Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK" type="button"> is not clickable at point (946,170) because another element <div class="Modal_modal_overlay__x2ZCr"> obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:351:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:175:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:297:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:180:31
+
+Click intercepted. Attempt 2/3: Message: Element <button class="Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK" type="button"> is not clickable at point (946,170) because another element <div class="Modal_modal_overlay__x2ZCr"> obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:351:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:175:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:297:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:180:31
+
+Click intercepted. Attempt 3/3: Message: Element <button class="Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK" type="button"> is not clickable at point (946,170) because another element <div class="Modal_modal_overlay__x2ZCr"> obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:351:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:175:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:297:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:180:31
+
