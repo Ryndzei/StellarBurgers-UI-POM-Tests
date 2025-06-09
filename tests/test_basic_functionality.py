@@ -1,4 +1,7 @@
 import allure
+from page_objects.home_page import HomePage
+from page_objects.login_page import LoginPage
+from page_objects.orders_list_page import OrdersListPage
 from urls import URL
 
 
@@ -8,7 +11,9 @@ class TestBasicFunctionality:
 
     @allure.title("Переход на страницу 'Конструктор'")
     @allure.description("Проверяет успешный переход на главную страницу при клике на 'Конструктор'.")
-    def test_go_to_constructor_page_successfully(self, home_page, login_page):
+    def test_go_to_constructor_page_successfully(self, driver):
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
         login_page.open(URL.LOGIN_URL)
         login_page.click_constructor()
         login_page.wait_until_url_to_be_base_page()
@@ -17,7 +22,9 @@ class TestBasicFunctionality:
 
     @allure.title("Переход на страницу 'Лента заказов'")
     @allure.description("Проверяет переход на страницу ленты заказов при клике на соответствующую ссылку.")
-    def test_go_to_orders_list_page_successfully(self, home_page, orders_list_page):
+    def test_go_to_orders_list_page_successfully(self, driver):
+        home_page = HomePage(driver)
+        orders_list_page = OrdersListPage(driver)
         home_page.open(URL.BASE_URL)
         home_page.click_orders_list()
         home_page.wait_until_url_to_be_orders_list_page()
@@ -26,7 +33,8 @@ class TestBasicFunctionality:
 
     @allure.title("Открытие деталей ингредиента")
     @allure.description("Проверяет открытие всплывающего окна с деталями ингредиента при клике.")
-    def test_details_of_ingredient_pop_up_appear_on_click_successfully(self, home_page):
+    def test_details_of_ingredient_pop_up_appear_on_click_successfully(self, driver):
+        home_page = HomePage(driver)
         home_page.open(URL.BASE_URL)
         home_page.click_on_ingredient()
         home_page.wait_for_details_popup_appear()
@@ -36,7 +44,8 @@ class TestBasicFunctionality:
 
     @allure.title("Закрытие деталей ингредиента")
     @allure.description("Проверяет закрытие всплывающего окна с деталями ингредиента.")
-    def test_close_details_of_ingredient_pop_up_on_click_button_successfully(self, home_page):
+    def test_close_details_of_ingredient_pop_up_on_click_button_successfully(self, driver):
+        home_page = HomePage(driver)
         home_page.open(URL.BASE_URL)
         home_page.click_on_ingredient()
         home_page.wait_for_details_popup_appear()
@@ -46,7 +55,8 @@ class TestBasicFunctionality:
 
     @allure.title("Увеличение счетчика ингредиента")
     @allure.description("Проверяет увеличение счетчика при добавлении ингредиента в заказ.")
-    def test_counter_of_ingredient_increases_successfully(self, home_page):
+    def test_counter_of_ingredient_increases_successfully(self, driver):
+        home_page = HomePage(driver)
         home_page.open(URL.BASE_URL)
         initial_counter = home_page.get_R2_D3_bun_ingredient_counter()
         home_page.drag_and_drop_R2_D3_bun_to_constructor()
@@ -56,7 +66,9 @@ class TestBasicFunctionality:
 
     @allure.title("Оформление заказа")
     @allure.description("Проверяет успешное оформление заказа залогиненным пользователем.")
-    def test_make_an_order_when_logged_in_successfully(self, login_page, home_page, user_create_and_cleanup):
+    def test_make_an_order_when_logged_in_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
         payload = user_create_and_cleanup
         login_page.open(URL.LOGIN_URL)
         login_page.set_email(payload["email"])

@@ -11,5 +11,5 @@ class HomePageLocators:
     ORDER_IN_PROGRESS_TEXT = (By.XPATH, '//p[contains(text(), "Ваш заказ начали готовить")]')
     SOURCE_DROP = INGREDIENT_R2_D3_BUN
     TARGET_DROP = (By.XPATH, './/ul[contains(@class, "BurgerConstructor_basket__list__l9dp_")]')
-    R2_D3_BUN_COUNTER = (By.XPATH, './/section[1]/div[2]/ul[1]/a[1]/div[1]/p[contains(@class, "counter_counter__num__3nue1")]')
+    R2_D3_BUN_COUNTER = (By.XPATH, './/section[1]/div[2]/ul[1]/a[1]/div/p[contains(@class, "counter_counter__num__3nue1")]')
     ORDER_ID = (By.XPATH, './/div[1]/div/h2')

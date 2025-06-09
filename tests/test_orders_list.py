@@ -1,4 +1,8 @@
 import allure
+from page_objects.home_page import HomePage
+from page_objects.login_page import LoginPage
+from page_objects.orders_list_page import OrdersListPage
+from page_objects.personal_account_page import PersonalAccountPage
 from urls import URL
 
 
@@ -8,7 +12,8 @@ class TestOrdersList:
 
     @allure.title("Открытие деталей заказа")
     @allure.description("Проверяет открытие всплывающего окна с деталями заказа при клике.")
-    def test_details_of_order_pop_up_appear_on_click_successfully(self, orders_list_page):
+    def test_details_of_order_pop_up_appear_on_click_successfully(self, driver):
+        orders_list_page = OrdersListPage(driver)
         orders_list_page.open(URL.ORDERS_LIST_URL)
         orders_list_page.click_first_order()
 
@@ -17,7 +22,11 @@ class TestOrdersList:
 
     @allure.title("Отображение заказов из истории")
     @allure.description("Проверяет отображение заказов из истории в ленте заказов.")
-    def test_orders_from_history_are_in_orders_list(self, login_page, home_page, personal_account_page, orders_list_page, user_create_and_cleanup):
+    def test_orders_from_history_are_in_orders_list(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        personal_account_page = PersonalAccountPage(driver)
+        orders_list_page = OrdersListPage(driver)
         payload = user_create_and_cleanup
         login_page.open(URL.LOGIN_URL)
         login_page.set_email(payload["email"])
@@ -39,7 +48,10 @@ class TestOrdersList:
 
     @allure.title("Увеличение счетчика 'За всё время'")
     @allure.description("Проверяет увеличение счетчика 'Выполнено за всё время' при новом заказе.")
-    def test_all_time_orders_done_counter_amount_increase_successfully(self, login_page, home_page, orders_list_page, user_create_and_cleanup):
+    def test_all_time_orders_done_counter_amount_increase_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        orders_list_page = OrdersListPage(driver)
         orders_list_page.open(URL.ORDERS_LIST_URL)
         counter_amount_before_order = orders_list_page.get_all_time_orders_done_counter_amount()
         orders_list_page.click_personal_account()
@@ -59,7 +71,10 @@ class TestOrdersList:
 
     @allure.title("Увеличение счетчика 'За сегодня'")
     @allure.description("Проверяет увеличение счетчика 'Выполнено за сегодня' при новом заказе.")
-    def test_today_orders_done_counter_amount_increase_successfully(self, login_page, home_page, orders_list_page, user_create_and_cleanup):
+    def test_today_orders_done_counter_amount_increase_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        orders_list_page = OrdersListPage(driver)
         orders_list_page.open(URL.ORDERS_LIST_URL)
         counter_amount_before_order = orders_list_page.get_today_orders_done_counter_amount()
         orders_list_page.click_personal_account()
@@ -79,7 +94,10 @@ class TestOrdersList:
 
     @allure.title("Отображение заказа в 'В работе'")
     @allure.description("Проверяет появление номера заказа в разделе 'В работе' после оформления.")
-    def test_order_id_appears_in_orders_in_progress_section_successfully(self, login_page, home_page, orders_list_page, user_create_and_cleanup):
+    def test_order_id_appears_in_orders_in_progress_section_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        orders_list_page = OrdersListPage(driver)
         login_page.open(URL.LOGIN_URL)
         payload = user_create_and_cleanup
         login_page.set_email(payload["email"])

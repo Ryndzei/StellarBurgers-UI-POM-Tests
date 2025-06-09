@@ -1,4 +1,8 @@
 import allure
+
+from page_objects.home_page import HomePage
+from page_objects.login_page import LoginPage
+from page_objects.personal_account_page import PersonalAccountPage
 from urls import URL
 
 
@@ -8,7 +12,10 @@ class TestPersonalAccount:
 
     @allure.title("Переход в личный кабинет")
     @allure.description("Проверяет успешный переход в личный кабинет залогиненным пользователем.")
-    def test_go_to_personal_account_page_successfully(self, login_page, personal_account_page, home_page, user_create_and_cleanup):
+    def test_go_to_personal_account_page_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        personal_account_page = PersonalAccountPage(driver)
+        home_page = HomePage(driver)
         payload = user_create_and_cleanup
         login_page.open(URL.LOGIN_URL)
         login_page.set_email(payload["email"])
@@ -22,7 +29,10 @@ class TestPersonalAccount:
 
     @allure.title("Переход в историю заказов")
     @allure.description("Проверяет переход в раздел 'История заказов' из личного кабинета.")
-    def test_go_to_personal_account_order_history_successfully(self, login_page, personal_account_page, home_page, user_create_and_cleanup):
+    def test_go_to_personal_account_order_history_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        personal_account_page = PersonalAccountPage(driver)
+        home_page = HomePage(driver)
         payload = user_create_and_cleanup
         login_page.open(URL.LOGIN_URL)
         login_page.set_email(payload["email"])
@@ -38,7 +48,10 @@ class TestPersonalAccount:
 
     @allure.title("Выход из аккаунта")
     @allure.description("Проверяет успешный выход из аккаунта через личный кабинет.")
-    def test_logout_from_personal_account_successfully(self, login_page, personal_account_page, home_page, user_create_and_cleanup):
+    def test_logout_from_personal_account_successfully(self, driver, user_create_and_cleanup):
+        login_page = LoginPage(driver)
+        personal_account_page = PersonalAccountPage(driver)
+        home_page = HomePage(driver)
         payload = user_create_and_cleanup
         login_page.open(URL.LOGIN_URL)
         login_page.set_email(payload["email"])
